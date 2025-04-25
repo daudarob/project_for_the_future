@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora - Monetization</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Monetization Section */
+        .monetization {
+            padding: 5rem 0;
+            background-color: #f5f7fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .monetization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .monetization-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .monetization-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .monetization-card h3 {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .monetization-card h3 i {
+            margin-right: 0.8rem;
+            font-size: 1.3rem;
+        }
+        
+        .monetization-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        
+        .revenue-calculator {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: rgba(67, 97, 238, 0.05);
+            border-radius: 10px;
+        }
+        
+        .revenue-calculator h4 {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark-color);
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+        
+        .connect-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .connect-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+        }
+        
+        .revenue-result {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #eee;
+        }
+        
+        .revenue-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin: 0.5rem 0;
+        }
+        
+        .affiliate-dashboard {
+            margin-top: 1.5rem;
+        }
+        
+        .affiliate-stats {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat {
+            text-align: center;
+            flex: 1;
+            padding: 1rem;
+            background-color: rgba(67, 97, 238, 0.05);
+            border-radius: 8px;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.3rem;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .membership-options {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+        
+        .membership-tier {
+            flex: 1;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .membership-tier:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .membership-tier h4 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .membership-tier p {
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .membership-tier ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        
+        .membership-tier ul li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .membership-tier ul li i {
+            color: var(--success-color);
+            margin-right: 0.5rem;
+            margin-top: 0.2rem;
+        }
+        
+        .membership-button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .membership-button:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.2);
+        }
+        
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--accent-color);
+        }
+        
+        .footer-column p {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 0.95rem;
+            display: inline-block;
+            padding: 0.2rem 0;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .monetization {
+            background-color: #1a1a1a;
+        }
+        
+        body.dark-mode .monetization-card,
+        body.dark-mode .revenue-calculator,
+        body.dark-mode .revenue-result,
+        body.dark-mode .membership-tier {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+            border-color: #333;
+        }
+        
+        body.dark-mode .monetization-card p,
+        body.dark-mode .stat-label,
+        body.dark-mode .membership-tier p {
+            color: #b0b0b0;
+        }
+        
+        body.dark-mode .form-group input {
+            background-color: #2a2a2a;
+            border-color: #333;
+            color: #e0e0e0;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .monetization-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .affiliate-stats,
+            .membership-options {
+                flex-direction: column;
+            }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .footer-column {
+                text-align: center;
+            }
+            
+            .footer-column h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .social-links {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Monetization Section -->
+    <section class="monetization" id="monetize">
+        <div class="container">
+            <div class="section-title">
+                <h2>Monetization Opportunities</h2>
+                <p>Turn your social media presence into revenue streams with Nexora</p>
+            </div>
+            <div class="monetization-grid">
+                <div class="monetization-card">
+                    <h3><i class="fas fa-ad"></i> Ad Revenue Sharing</h3>
+                    <p>Earn money from ads displayed on your content based on engagement metrics and audience size. Our competitive CPM rates ensure you maximize your earning potential.</p>
+                    <div class="revenue-calculator">
+                        <h4>Estimate Your Earnings</h4>
+                        <div class="form-group">
+                            <label for="monthlyViews">Monthly Views:</label>
+                            <input type="number" id="monthlyViews" min="0" value="10000">
+                        </div>
+                        <div class="form-group">
+                            <label for="engagementRate">Engagement Rate (%):</label>
+                            <input type="number" id="engagementRate" min="0" max="100" value="5">
+                        </div>
+                        <button id="calculateRevenue" class="connect-button">Calculate</button>
+                        <div id="revenueResult" class="revenue-result"></div>
+                    </div>
+                </div>
+                <div class="monetization-card">
+                    <h3><i class="fas fa-hand-holding-usd"></i> Affiliate Partnerships</h3>
+                    <p>Join our affiliate program and earn commissions for promoting products and services. Access our marketplace of premium brands and track your performance in real-time.</p>
+                    <div class="affiliate-dashboard">
+                        <div class="affiliate-stats">
+                            <div class="stat">
+                                <div class="stat-value" id="clicks">0</div>
+                                <div class="stat-label">Total Clicks</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value" id="conversions">0</div>
+                                <div class="stat-label">Conversions</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-value" id="earnings">$0.00</div>
+                                <div class="stat-label">Total Earnings</div>
+                            </div>
+                        </div>
+                        <button id="viewAffiliatePortal" class="connect-button">View Affiliate Portal</button>
+                    </div>
+                </div>
+                <div class="monetization-card">
+                    <h3><i class="fas fa-gem"></i> Premium Memberships</h3>
+                    <p>Offer exclusive content and features to subscribers for recurring revenue. Set your own pricing and deliver premium experiences to your most dedicated fans.</p>
+                    <div class="membership-options">
+                        <div class="membership-tier">
+                            <h4>Basic</h4>
+                            <p>$4.99/month</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Ad-free experience</li>
+                                <li><i class="fas fa-check"></i> Basic analytics</li>
+                                <li><i class="fas fa-check"></i> Early content access</li>
+                            </ul>
+                            <button class="membership-button" data-tier="basic">Select</button>
+                        </div>
+                        <div class="membership-tier">
+                            <h4>Pro</h4>
+                            <p>$9.99/month</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> All Basic features</li>
+                                <li><i class="fas fa-check"></i> Advanced analytics</li>
+                                <li><i class="fas fa-check"></i> Exclusive content</li>
+                                <li><i class="fas fa-check"></i> Direct creator support</li>
+                            </ul>
+                            <button class="membership-button" data-tier="pro">Select</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Nexora</h3>
+                    <p>The ultimate social media hub for creators and businesses. Connect, manage, and monetize all your social platforms in one place.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#monetize">Monetization</a></li>
+                        <li><a href="indexabout.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Nexora. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Revenue Calculator
+            const calculateRevenueBtn = document.getElementById('calculateRevenue');
+            const revenueResult = document.getElementById('revenueResult');
+            
+            calculateRevenueBtn.addEventListener('click', function() {
+                const views = parseInt(document.getElementById('monthlyViews').value);
+                const engagement = parseInt(document.getElementById('engagementRate').value);
+                
+                if (isNaN(views) || isNaN(engagement)) {
+                    alert('Please enter valid numbers for both fields');
+                    return;
+                }
+                
+                // Enhanced revenue calculation formula
+                const baseRate = 0.0015; // $1.50 per 1000 views
+                const engagementBonus = 1 + (engagement / 20); // Up to 5x bonus for high engagement
+                const revenue = (views * baseRate) * engagementBonus;
+                
+                revenueResult.innerHTML = `
+                    <h4>Estimated Monthly Revenue</h4>
+                    <div class="revenue-value">$${revenue.toFixed(2)}</div>
+                    <p>Based on ${views.toLocaleString()} views and ${engagement}% engagement rate</p>
+                    <p class="revenue-note">Actual earnings may vary based on content type and audience demographics</p>
+                `;
+            });
+
+            // Simulate affiliate stats
+            function updateAffiliateStats() {
+                // In a real app, these would come from an API
+                const clicks = Math.floor(Math.random() * 1000) + 50;
+                const conversions = Math.floor(clicks * 0.12); // 12% conversion rate
+                const earnings = conversions * 3.75; // $3.75 average commission
+                
+                document.getElementById('clicks').textContent = clicks.toLocaleString();
+                document.getElementById('conversions').textContent = conversions.toLocaleString();
+                document.getElementById('earnings').textContent = `$${earnings.toFixed(2)}`;
+            }
+            
+            // Update stats every 3 seconds to simulate live data
+            updateAffiliateStats();
+            setInterval(updateAffiliateStats, 3000);
+            
+            // Affiliate portal button
+            document.getElementById('viewAffiliatePortal').addEventListener('click', function() {
+                alert('Redirecting to affiliate portal...');
+                // In a real implementation, this would redirect to the portal
+            });
+
+            // Membership selection
+            document.querySelectorAll('.membership-button').forEach(button => {
+                button.addEventListener('click', function() {
+                    const tier = this.dataset.tier;
+                    alert(`You've selected the ${tier.toUpperCase()} membership tier. In a real implementation, this would start the checkout process.`);
+                });
+            });
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        targetElement.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

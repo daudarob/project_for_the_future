@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ConnectHub - Ultimate Social Media Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --secondary-color: #3f37c9;
+            --accent-color: #4cc9f0;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
+            --danger-color: #f44336;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav ul li a i {
+            margin-right: 5px;
+        }
+        
+        .auth-buttons button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-left: 10px;
+        }
+        
+        .sign-in {
+            background-color: transparent;
+            color: white;
+            border: 1px solid white;
+        }
+        
+        .sign-up {
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+        }
+        
+        .sign-in:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .sign-up:hover {
+            background-color: #3ab7d8;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+        
+        .cta-button:hover {
+            background-color: #3ab7d8;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .secondary-button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .secondary-button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        /* Social Media Grid */
+        .social-grid {
+            padding: 4rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-color);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0.5rem auto 0;
+        }
+        
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .social-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        
+        .social-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .social-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .social-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+        
+        .social-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .connect-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .connect-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Premium Features */
+        .premium-features {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 4rem 0;
+        }
+        
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s;
+        }
+        
+        .feature-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .feature-card p {
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Engagement Metrics */
+        .engagement-metrics {
+            padding: 4rem 0;
+            background-color: white;
+        }
+        
+        .metrics-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: 2rem;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 2rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .metric-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        /* Monetization Section */
+        .monetization {
+            padding: 4rem 0;
+            background-color: #f5f7fa;
+        }
+        
+        .monetization-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .monetization-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .monetization-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+        
+        .monetization-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--accent-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 10% auto;
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .close-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: #aaa;
+            cursor: pointer;
+        }
+        
+        .close-button:hover {
+            color: var(--dark-color);
+        }
+        
+        .modal h2 {
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .modal-button {
+            width: 100%;
+            padding: 0.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .modal-button:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .form-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0 0.5rem;
+            }
+            
+            .auth-buttons {
+                margin-top: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .metrics-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .metric-card {
+                margin-bottom: 1.5rem;
+            }
+        }
+        
+        /* Advanced Features */
+        .live-feed {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+        }
+        
+        .feed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .feed-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .feed-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .feed-item:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .feed-source {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feed-source-icon {
+            width: 24px;
+            height: 24px;
+            margin-right: 8px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+        }
+        
+        .feed-source-name {
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        
+        .feed-text {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .feed-actions {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .feed-action {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        
+        .feed-action i {
+            margin-right: 5px;
+        }
+        
+        /* Interactive Poll */
+        .poll-container {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+        }
+        
+        .poll-question {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        
+        .poll-options {
+            margin-bottom: 1.5rem;
+        }
+        
+        .poll-option {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border: 1px solid #eee;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        .poll-option:hover {
+            background-color: #f5f7fa;
+        }
+        
+        .poll-option.selected {
+            border-color: var(--primary-color);
+            background-color: rgba(67, 97, 238, 0.05);
+        }
+        
+        .poll-percentage {
+            height: 5px;
+            background-color: #eee;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+            overflow: hidden;
+        }
+        
+        .poll-percentage-fill {
+            height: 100%;
+            background-color: var(--primary-color);
+            width: 0;
+            transition: width 0.5s ease;
+        }
+        
+        .poll-vote-count {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.3rem;
+        }
+        
+        .poll-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+        
+        .poll-submit:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Gamification Elements */
+        .badges-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .badge {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 0.8rem;
+            border-radius: 50px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .badge-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 0.8rem;
+        }
+        
+        .badge-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .badge-info p {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        /* Leaderboard */
+        .leaderboard {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 2rem 0;
+        }
+        
+        .leaderboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .leaderboard-list {
+            list-style: none;
+        }
+        
+        .leaderboard-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .leaderboard-item:last-child {
+            border-bottom: none;
+        }
+        
+        .leaderboard-rank {
+            font-weight: 700;
+            width: 30px;
+            text-align: center;
+            margin-right: 1rem;
+        }
+        
+        .leaderboard-user {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+        
+        .leaderboard-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #eee;
+            margin-right: 1rem;
+            overflow: hidden;
+        }
+        
+        .leaderboard-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .leaderboard-name {
+            font-weight: 500;
+        }
+        
+        .leaderboard-score {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+        
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .toggle-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .toggle-button:hover {
+            transform: scale(1.1);
+        }
+        
+        /* Dark Mode Styles */
+        body.dark-mode {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .social-card,
+        body.dark-mode .monetization-card,
+        body.dark-mode .engagement-metrics,
+        body.dark-mode .live-feed,
+        body.dark-mode .poll-container,
+        body.dark-mode .leaderboard {
+            background-color: #1e1e1e;
+            color: #e0e0e0;
+        }
+        
+        body.dark-mode .social-card p,
+        body.dark-mode .monetization-card p,
+        body.dark-mode .metric-label,
+        body.dark-mode .feed-text,
+        body.dark-mode .poll-question,
+        body.dark-mode .leaderboard-name {
+            color: #b0b0b0;
+        }
+        
+        body.dark-mode .section-title p {
+            color: #b0b0b0;
+        }
+        
+        body.dark-mode .feed-item,
+        body.dark-mode .poll-option {
+            border-color: #333;
+        }
+        
+        body.dark-mode .poll-option:hover {
+            background-color: #2a2a2a;
+        }
+        
+        body.dark-mode .badge {
+            background-color: #2a2a2a;
+        }
+        
+        body.dark-mode .badge-info p {
+            color: #b0b0b0;
+        }
+        
+        /* Animation Classes */
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-share-alt"></i>
+                <span>Nexora</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#social"><i class="fas fa-hashtag"></i> Social</a></li>
+                    <li><a href="#features"><i class="fas fa-star"></i> Features</a></li>
+                    <li><a href="indexmonetize.html"><i class="fas fa-dollar-sign"></i> Monetize</a></li>
+                    <li><a href="indexabout.html"><i class="fas fa-info-circle"></i> About</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <button class="sign-in" id="signInBtn"><i class="fas fa-sign-in-alt"></i> Sign In</button>
+                <button class="sign-up" id="signUpBtn"><i class="fas fa-user-plus"></i> Sign Up</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Connect Across All Social Platforms</h1>
+            <p>Nexora is the ultimate social media hub that links all your favorite platforms while providing unique engagement features and monetization opportunities.</p>
+            <a href="#social" class="cta-button pulse"><i class="fas fa-rocket"></i> Explore Now</a>
+            <a href="#monetize" class="cta-button secondary-button"><i class="fas fa-dollar-sign"></i> Earn Money</a>
+        </div>
+    </section>
+
+    <!-- Social Media Grid -->
+    <section class="social-grid" id="social">
+        <div class="container">
+            <div class="section-title">
+                <h2>Connect Your Social Networks</h2>
+                <p>Link all your favorite social media accounts in one place and manage your online presence effortlessly.</p>
+            </div>
+            <div class="grid-container">
+                <div class="social-card floating" style="animation-delay: 0.1s;">
+                    <div class="social-icon">
+                        <i class="fab fa-facebook"></i>
+                    </div>
+                    <h3>Facebook</h3>
+                    <p>Connect your Facebook account to share content across platforms and analyze engagement metrics.</p>
+                    <a href="#" class="connect-button" id="connectFacebook"><i class="fas fa-link"></i> Connect</a>
+                </div>
+                <div class="social-card floating" style="animation-delay: 0.2s;">
+                    <div class="social-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <h3>Twitter</h3>
+                    <p>Link your Twitter to schedule posts, track trends, and engage with your audience in real-time.</p>
+                    <a href="#" class="connect-button" id="connectTwitter"><i class="fas fa-link"></i> Connect</a>
+                </div>
+                <div class="social-card floating" style="animation-delay: 0.3s;">
+                    <div class="social-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram</h3>
+                    <p>Connect Instagram to cross-post content, track growth, and optimize your visual strategy.</p>
+                    <a href="https://www.instagram.com/robdee1236?igsh=MXJodTJjbGQ0M2ExcA%3D%3D&utm_source=qr" class="connect-button" id="connectInstagram"><i class="fas fa-link"></i> Connect</a>
+                </div>
+                <div class="social-card floating" style="animation-delay: 0.4s;">
+                    <div class="social-icon">
+                        <i class="fab fa-linkedin"></i>
+                    </div>
+                    <h3>LinkedIn</h3>
+                    <p>Professional networking made easy with advanced analytics and content scheduling.</p>
+                    <a href="https://www.linkedin.com/in/dauda-abdulai-a53b29329?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" class="connect-button" id="connectLinkedIn"><i class="fas fa-link"></i> Connect</a>
+                </div>
+                <div class="social-card floating" style="animation-delay: 0.5s;">
+                    <div class="social-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube</h3>
+                    <p>Track video performance, manage comments, and grow your subscriber base.</p>
+                    <a href="https://youtube.com/@d-metotic?feature=shared" class="connect-button" id="connectYouTube"><i class="fas fa-link"></i> Connect</a>
+                </div>
+                <div class="social-card floating" style="animation-delay: 0.6s;">
+                    <div class="social-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok</h3>
+                    <p>Connect your TikTok to analyze trends, track growth, and optimize your content strategy.</p>
+                    <a href="https://www.tiktok.com/@dmetotic?_t=ZM-8vfYOL9rTcL&_r=1" class="connect-button" id="connectTikTok"><i class="fas fa-link"></i> Connect</a>
+                </div>
+                <div class="social-card floating" style="animation-delay: 0.7s;">
+                    <div class="social-icon">
+                        <i class="fab fa-reddit"></i>
+                    </div>
+                    <h3>Reddit</h3>
+                    <p>Monitor subreddits, track post performance, and engage with communities.</p>
+                    <a href="#" class="connect-button" id="connectReddit"><i class="fas fa-link"></i> Connect</a>
+                </div>
+                <div class="social-card floating" style="animation-delay: 0.8s;">
+                    <div class="social-icon">
+                        <i class="fab fa-pinterest"></i>
+                    </div>
+                    <h3>Pinterest</h3>
+                    <p>Connect Pinterest to track pins, analyze engagement, and grow your audience.</p>
+                    <a href="#" class="connect-button" id="connectPinterest"><i class="fas fa-link"></i> Connect</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Premium Features -->
+    <section class="premium-features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: white;">Premium Features</h2>
+                <p style="color: #ccc;">Advanced tools to take your social media presence to the next level</p>
+            </div>
+            <div class="features-container">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Advanced Analytics</h3>
+                    <p>Get detailed insights into your audience demographics, engagement rates, and content performance across all platforms.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI-Powered Optimization</h3>
+                    <p>Our AI analyzes your content and suggests optimal posting times, hashtags, and content strategies.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Content Scheduler</h3>
+                    <p>Plan and schedule posts across all your connected platforms from one centralized dashboard.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <h3>Unified Inbox</h3>
+                    <p>Manage all your messages, comments, and mentions from different platforms in one place.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Real-Time Alerts</h3>
+                    <p>Get instant notifications for important engagements, trends, and platform changes.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Collaboration Tools</h3>
+                    <p>Invite team members, assign roles, and collaborate seamlessly on content creation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engagement Metrics -->
+    <section class="engagement-metrics">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Engagement Metrics</h2>
+                <p>Track your performance across all connected platforms in real-time</p>
+            </div>
+            <div class="metrics-container">
+                <div class="metric-card">
+                    <div class="metric-value" id="totalFollowers">1.2M</div>
+                    <div class="metric-label">Total Followers</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="engagementRate">8.7%</div>
+                    <div class="metric-label">Engagement Rate</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="weeklyGrowth">+12.5K</div>
+                    <div class="metric-label">Weekly Growth</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value" id="contentPosts">347</div>
+                    <div class="metric-label">Content Posts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Add this section after the social-grid div -->
+    <div class="container">
+        <div class="add-social-section">
+            <h3>Add More Social Networks</h3>
+            <div class="add-social-form">
+                <input type="text" id="socialMediaUrl" placeholder="Paste profile URL (e.g., https://twitter.com/yourhandle)">
+                <button id="addSocialButton" class="connect-button">
+                    <i class="fas fa-plus"></i> Add Connection
+                </button>
+            </div>
+            <div class="supported-platforms">
+                <p>Supported platforms: Facebook, Twitter, Instagram, LinkedIn, YouTube, TikTok, Pinterest, Reddit, Snapchat, Twitch</p>
+            </div>
+        </div>
+        <div id="customConnectionsContainer" class="grid-container">
+            <!-- Dynamically added connections will appear here -->
+        </div>
+    </div>
+
+    <!-- Live Social Feed -->
+    <section class="live-feed">
+        <div class="container">
+            <div class="feed-header">
+                <h3>Live Social Feed</h3>
+                <a href="#" class="connect-button">Refresh <i class="fas fa-sync-alt"></i></a>
+            </div>
+            <div class="feed-content">
+                <div class="feed-item">
+                    <div class="feed-source">
+                        <div class="feed-source-icon" style="background-color: #4267B2;">
+                            <i class="fab fa-facebook-f"></i>
+                        </div>
+                        <div class="feed-source-name">Facebook</div>
+                    </div>
+                    <div class="feed-text">
+                        Your post about "Social Media Trends 2023" has reached 12,345 people and has 1,234 engagements.
+                    </div>
+                    <div class="feed-actions">
+                        <div class="feed-action"><i class="far fa-thumbs-up"></i> Like</div>
+                        <div class="feed-action"><i class="far fa-comment"></i> Comment</div>
+                        <div class="feed-action"><i class="fas fa-share"></i> Share</div>
+                    </div>
+                </div>
+                <div class="feed-item">
+                    <div class="feed-source">
+                        <div class="feed-source-icon" style="background-color: #1DA1F2;">
+                            <i class="fab fa-twitter"></i>
+                        </div>
+                        <div class="feed-source-name">Twitter</div>
+                    </div>
+                    <div class="feed-text">
+                        Your tweet was mentioned by @techinfluencer to their 250K followers. Potential reach: 1.2M.
+                    </div>
+                    <div class="feed-actions">
+                        <div class="feed-action"><i class="far fa-heart"></i> Like</div>
+                        <div class="feed-action"><i class="fas fa-retweet"></i> Retweet</div>
+                        <div class="feed-action"><i class="far fa-comment"></i> Reply</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</head>
+    <!-- Link to JavaScript files at the end of the body -->
+    <script src="script.js"></script>
+    <script src="script2.js"></script>
+    <script src="script3.js"></script>
+    <script src="script4.js"></script>
+    <script src="script6.js"></script>
+    <script src="script5.js"></script>
+    <script src="about.js"></script>
+</body>
+
+</html>
